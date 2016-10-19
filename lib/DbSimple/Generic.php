@@ -33,7 +33,7 @@
  *
  * Contains 3 classes:
  * - DbSimple_Generic: database factory class
- * - DbSimple_Generic_Database: common database methods
+ * - DbSimple_Database: common database methods
  * - DbSimple_Generic_Blob: common BLOB support
  * - DbSimple_Generic_LastError: error reporting and tracking
  *

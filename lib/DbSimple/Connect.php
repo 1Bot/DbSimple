@@ -17,24 +17,20 @@ define('DBSIMPLE_PARENT_KEY', 'PARENT_KEY'); // forrest-based resultset support
  * <br>нужен для ленивой инициализации коннекта к базе
  *
  * @package DbSimple
- * @method mixed transaction(string $mode=null)
- * @method mixed commit()
- * @method mixed rollback()
- * @method mixed select(string $query [, $arg1] [,$arg2] ...)
- * @method mixed selectRow(string $query [, $arg1] [,$arg2] ...)
- * @method array selectCol(string $query [, $arg1] [,$arg2] ...)
- * @method string selectCell(string $query [, $arg1] [,$arg2] ...)
- * @method mixed query(string $query [, $arg1] [,$arg2] ...)
+ * @method mixed transaction(string $mode=null) - см. DbSimple_Database::transaction()
+ * @method mixed commit() - см. DbSimple_Database::commit()
+ * @method mixed rollback() - см. DbSimple_Database::rollback()
+ * @method mixed select(string $query) - см. DbSimple_Database::select()
+ * @method mixed selectRow() - см. DbSimple_Database::selectRow()
+ * @method array selectCol() - см. DbSimple_Database::selectCol()
+ * @method string selectCell() - см. DbSimple_Database::selectCell()
+ * @method mixed query() - см. DbSimple_Database::query()
  * @method string escape(mixed $s, bool $isIdent=false)
- * @method DbSimple_SubQuery subquery(string $query [, $arg1] [,$arg2] ...)
- * @method callback setLogger(callback $logger)
- * @method callback setCacher(callback $cacher)
- * @method string setIdentPrefix($prx)
- * @method string setCachePrefix($prx)
+ * @method DbSimple_SubQuery subquery()
  */
 class DbSimple_Connect
 {
-	/** @var DbSimple_Generic_Database База данных */
+	/** @var DbSimple_Database База данных */
 	protected $DbSimple;
 	/** @var string DSN подключения */
 	protected $DSN;

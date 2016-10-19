@@ -331,7 +331,7 @@ abstract class DbSimple_Database extends DbSimple_LastError
      * массив поле=>значение для этой строки
      *
      * @param string $name имя класса
-     * @return DbSimple_Generic_Database указатель на себя
+     * @return DbSimple_Database указатель на себя
      */
     public function setClassName($name)
     {
@@ -1239,7 +1239,7 @@ interface DbSimple_Blob
 
 /**
  * Класс для хранения подзапроса - результата выполнения функции
- * DbSimple_Generic_Database::subquery
+ * DbSimple_Database::subquery
  *
  */
 class DbSimple_SubQuery
