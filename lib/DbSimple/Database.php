@@ -845,8 +845,8 @@ abstract class DbSimple_Database extends DbSimple_LastError
                 case 'n':
                     // NULL-based placeholder.
                     return empty($value)? 'NULL' : intval($value);
-				case 'r':
-					return $value;
+                case 'r':
+                    return $value;
             }
 
             // Native arguments are not processed.
