@@ -717,13 +717,13 @@ abstract class DbSimple_Database extends DbSimple_LastError
                 # Optional blocks
                 \{
                     # Use "+" here, not "*"! Else nested blocks are not processed well.
-                    ( (?> (?>(\??)[^{}]+)  |  (?R) )* )             #1
+                    ( (?> (?>(\??)[^{}]+)  |  (?R) )* )             #1 #2
                 \}
             )
               |
             (?>
                 # Placeholder
-                (\?) ( [_dsafn&|\#]? )                           #2 #3
+                (\?) ( [_dsafnr&|\#]? )                           #3 #4
             )
         }sxS';
         $query = preg_replace_callback(
@@ -741,8 +741,14 @@ abstract class DbSimple_Database extends DbSimple_LastError
     );
 
     /**
-     * string _expandPlaceholdersCallback(list $m)
      * Internal function to replace placeholders (see preg_replace_callback).
+     * @param array $m
+     *         $m[0] - the whole regex match
+     *         $m[1] - if set, the whole optional block, without {outer curly brackets}
+     *         $m[2] - if set, the "?" sign for the optional block
+     *         $m[3] - if set, the "?" sign for non-optional block
+     *         $m[4] - if set, the placeholder type for the non-optional block, one of the following letters: _dsafnr&|#
+     * @return mixed
      */
     private function _expandPlaceholdersCallback($m)
     {
@@ -839,6 +845,8 @@ abstract class DbSimple_Database extends DbSimple_LastError
                 case 'n':
                     // NULL-based placeholder.
                     return empty($value)? 'NULL' : intval($value);
+				case 'r':
+					return $value;
             }
 
             // Native arguments are not processed.
