@@ -42,8 +42,8 @@ class DbSimple_Postgresql extends DbSimple_Database
 
         // Prepare+execute works only in PHP 5.1+.
         $this->DbSimple_Postgresql_USE_NATIVE_PHOLDERS = function_exists('pg_prepare');
-        
-        $dsnWithoutPass = 
+
+        $dsnWithoutPass =
         	(!empty($p['host']) ? 'host='.$p['host'].' ' : '') .
             (!empty($p['port']) ? 'port=' . $p['port'] . ' ' : '') .
             'dbname=' . preg_replace('{^/}s', '', $p['path']) .' '.
@@ -57,7 +57,7 @@ class DbSimple_Postgresql extends DbSimple_Database
         // $this->prepareCache may be cleaned, but $this->link is still
         // not closed. So the next creation of DbSimple_Postgresql()
         // would use exactly the same connection as the previous, but with
-        // empty $this->prepareCache, and it will generate "prepared statement 
+        // empty $this->prepareCache, and it will generate "prepared statement
         // xxx already exists" error each time we execute the same statement
         // as in the previous calls.
         $this->_resetLastError();
@@ -241,7 +241,7 @@ class DbSimple_Postgresql_Blob implements DbSimple_Blob
     var $id;
     var $database;
 
-    function DbSimple_Postgresql_Blob(&$database, $id=null)
+    function __construct(&$database, $id=null)
     {
         $this->database =& $database;
         $this->database->transaction();
