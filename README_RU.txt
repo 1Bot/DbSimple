@@ -78,7 +78,7 @@ require_once "DbSimple/Generic.php";
 $DATABASE = DbSimple_Generic::connect('mysql://test:test@localhost1/non-existed-db');
 
 // Устанавливаем обработчик ошибок.
-$DATABASE-&gt;setErrorHandler('databaseErrorHandler');
+$DATABASE->setErrorHandler('databaseErrorHandler');
 
 // Код обработчика ошибок SQL.
 function databaseErrorHandler($message, $info)
@@ -803,7 +803,7 @@ $DB->setLogger('myLogger');
 function myLogger($db, $sql)
 {
   // Находим контекст вызова этого запроса.
-  $caller = $db-&gt;findLibraryCaller();
+  $caller = $db->findLibraryCaller();
   $tip = "at ".@$caller['file'].' line '.@$caller['line'];
   // Печатаем запрос (конечно, Debug_HackerConsole лучше).
   echo "<xmp title=\"$tip\">";
